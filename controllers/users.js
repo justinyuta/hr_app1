@@ -5,7 +5,7 @@ const config = require('../config/config.js');
 //const database = require('../services/database.js');
 
 function post(req, res, next) {
-        var user = {
+    var user = {
         email: req.body.email
     };
     var unhashedPassword = req.body.password;
