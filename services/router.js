@@ -17,7 +17,7 @@ router.route('/users')
   .post(auth('ADMIN'),users.post);
 
 router.route('/users1')
-  .post(auth('ADMIN'),users.post);
+  .post(auth('ADMIN'),users1.post);
 
 
 router.route('/login')
