@@ -1,3 +1,4 @@
+// update in linux vs VS code remotr 
 var oracledb = require('oracledb');
 var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
