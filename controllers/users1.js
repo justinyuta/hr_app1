@@ -7,8 +7,7 @@ const database = require('../services/database.js');
   async function post(req, res, next) {
     var user = {
         email: req.body.email,
-        password: req.body.password,
-        hashedPassword: ''
+        password: req.body.password
     };
 
     var unhashedPassword = req.body.password;
@@ -22,10 +21,10 @@ const database = require('../services/database.js');
             if (err) {
                 return next(err);
             }
+            user.hashedPassword = hash;             
         });
     });
 
-    user.hashedPassword = hash;             
 
     res.status(200).json({
         user: user
