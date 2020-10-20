@@ -22,13 +22,15 @@ const database = require('../services/database.js');
                 return next(err);
             }
             user.hashedPassword = hash;             
+
+            res.status(200).json({
+                user: user
+            });
+        
         });
     });
 
 
-    res.status(200).json({
-        user: user
-    });
 
   }
    
