@@ -62,7 +62,7 @@ const database = require('../services/database.js');
     
             opts = { autoCommit: true};
 
-            const results = await database.simpleExecute(insert_sql, binds, opts);
+            const results = database.simpleExecute(insert_sql, binds, opts);
 
             user.role = 'BASE';
     
