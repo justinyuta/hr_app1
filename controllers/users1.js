@@ -11,12 +11,12 @@ async function post(req, res, next) {
 
     var unhashedPassword = req.body.password;
  
-    bcrypt.genSalt(10, function(err, salt) {
+    await bcrypt.genSalt(10, function(err, salt) {
         if (err) {
             return next(err);
         }
  
-        bcrypt.hash(unhashedPassword, salt, function(err, hash) {
+        await bcrypt.hash(unhashedPassword, salt, function(err, hash) {
             if (err) {
                 return next(err);
             }
