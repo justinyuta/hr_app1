@@ -23,6 +23,49 @@ const database = require('../services/database.js');
             }
             user.hashedPassword = hash;             
 
+            const insert_sql = 
+            'insert into jsao_users ( ' +
+            '   email, ' +
+            '   password, ' +
+            '   role ' +
+            ') ' +
+            'values (' +
+            '    :email, ' +
+            '    :password, ' +
+            '    \'BASE\' ' +
+            ') ' +
+            'returning ' +
+            '   id, ' +
+            '   email, ' +
+            '   role ' +
+            'into ' +
+            '   :rid, ' +
+            '   :remail, ' +
+            '   :rrole';
+            
+            const binds =  {
+                email: user.email.toLowerCase(),
+                password: user.hashedPassword,
+                rid: {
+                    type: oracledb.NUMBER,
+                    dir: oracledb.BIND_OUT
+                },
+                remail: {
+                    type: oracledb.STRING,
+                    dir: oracledb.BIND_OUT
+                },
+                rrole: {
+                    type: oracledb.STRING,
+                    dir: oracledb.BIND_OUT
+                }
+                };
+    
+            opts = { autoCommit: true};
+
+            const results = await database.simpleExecute(insert_sql, binds, opts);
+
+            user.role = 'BASE';
+    
             res.status(200).json({
                 user: user
             });
