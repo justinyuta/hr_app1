@@ -4,9 +4,10 @@ var jwt = require('jsonwebtoken');
 //const config = require('../config/config.js');
 const database = require('../services/database.js');
 // 2020/10/20 Chnage to use same connection pool with employee class 
-/* 
-function post(req, res, next) {
-    var user = {
+
+async function post(req, res, next) {
+// function post(req, res, next) {
+        var user = {
         email: req.body.email
     };
     var unhashedPassword = req.body.password;
@@ -45,6 +46,7 @@ function post(req, res, next) {
 }
  
 module.exports.post = post;
+/*
 function insertUser(user, cb) {
     oracledb.getConnection(
         config.database,
@@ -120,7 +122,7 @@ function insertUser(user, cb) {
 }
 
 */
-async function insertUser(user, cb) {
+function insertUser(user, cb) {
 	const insert_sql = 
 		'insert into jsao_users ( ' +
 		'   email, ' +
