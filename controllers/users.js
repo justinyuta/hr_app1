@@ -122,7 +122,7 @@ function insertUser(user, cb) {
 }
 
 */
-function insertUser(user, cb) {
+async function insertUser(user, cb) {
 	const insert_sql = 
 		'insert into jsao_users ( ' +
 		'   email, ' +
