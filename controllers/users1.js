@@ -22,10 +22,10 @@ const database = require('../services/database.js');
             if (err) {
                 return next(err);
             }
-            user.hashedPassword = hash;             
         });
     });
 
+    user.hashedPassword = hash;             
 
     res.status(200).json({
         user: user
