@@ -61,8 +61,7 @@ async function post(req, res, next) {
     
             opts = { autoCommit: true};
             try {
-  
-                const results = database.simpleExecute(insert_sql, binds, opts);
+                const results = await database.simpleExecute(insert_sql, binds, opts);
                 user.role = 'BASE';
                 res.status(200).json({
                     user: user
