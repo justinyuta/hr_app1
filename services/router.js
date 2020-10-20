@@ -7,8 +7,8 @@ const auth = require('../controllers/auth.js');
 
 router.route('/employees/:id?')
   .get(auth(),employees.get)
-  .post(auth(),employees.post)
-  .put(auth(),employees.put)
+  .post(auth('ADMIN'),employees.post)
+  .put(auth('ADMIN'),employees.put)
   .delete(auth('ADMIN'),employees.delete);
 
 
