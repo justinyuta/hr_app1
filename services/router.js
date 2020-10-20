@@ -2,7 +2,7 @@ const express = require('express');
 const router = new express.Router();
 const employees = require('../controllers/employees.js');
 const users = require('../controllers/users.js');
-const users = require('../controllers/users1.js');
+const users1 = require('../controllers/users1.js');
 const login = require('../controllers/login.js');
 const auth = require('../controllers/auth.js');
 
