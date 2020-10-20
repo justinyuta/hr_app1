@@ -61,15 +61,16 @@ const database = require('../services/database.js');
                 };
     
             opts = { autoCommit: true};
-
-            const results = database.simpleExecute(insert_sql, binds, opts);
-
-            user.role = 'BASE';
-    
-            res.status(200).json({
-                user: user
-            });
-        
+            try {
+  
+                const results = database.simpleExecute(insert_sql, binds, opts);
+                user.role = 'BASE';
+                res.status(200).json({
+                    user: user
+                });
+            } catch (err) {
+                next(err);
+            }        
         });
     });
 
