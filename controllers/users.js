@@ -161,10 +161,7 @@ async function insertUser(user, cb) {
 
 	 opts = { autoCommit: true};
 	 const results = await database.simpleExecute(insert_sql, binds, opts);
-	 if (err) {
-		return cb(err);
-         }
-         cb(null, {
+     return cb(err, {
 				id: results.outBinds.rid[0],
 				email: results.outBinds.remail[0],
 				role: results.outBinds.rrole[0]
