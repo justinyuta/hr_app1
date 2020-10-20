@@ -1,9 +1,10 @@
 var oracledb = require('oracledb');
 var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
-const config = require('../config/config.js');
-// const database = require('../services/database.js');
- 
+//const config = require('../config/config.js');
+const database = require('../services/database.js');
+// 2020/10/20 Chnage to use same connection pool with employee class 
+/* 
 function post(req, res, next) {
     var user = {
         email: req.body.email
@@ -118,8 +119,8 @@ function insertUser(user, cb) {
     );
 }
 
-/*
-function insertUser(user, cb) {
+*/
+async function insertUser(user, cb) {
 	const insert_sql = 
 		'insert into jsao_users ( ' +
 		'   email, ' +
@@ -157,7 +158,7 @@ function insertUser(user, cb) {
 			};
 
 	 opts = { autoCommit: true};
-	 const results = database.simpleExecute(insert_sql, binds, opts);
+	 const results = await database.simpleExecute(insert_sql, binds, opts);
 	 if (err) {
 		return cb(err);
          }
@@ -167,4 +168,3 @@ function insertUser(user, cb) {
 				role: results.outBinds.rrole[0]
 			});
 }
-*/
