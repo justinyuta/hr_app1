@@ -53,10 +53,11 @@ function post(req, res, next) {
         if (err) {
             return next(err);
         }
-        user.hashedPassword = bcrypt.hash(unhashedPassword, salt, function(err, hash) {
+        bcrypt.hash(unhashedPassword, salt, function(err, hash) {
             if (err) {
                 return next(err);
             }
+            user.hashedPassword = hash;
         });
     }); 
     console.log('User:');
