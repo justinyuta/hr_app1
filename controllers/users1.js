@@ -61,6 +61,8 @@ async function post(req, res, next) {
     });
     try {
         const results = database.simpleExecute(insert_sql, binds, opts);
+        console.log('Result:');
+        console.log(results);
         user.role = 'BASE';
         res.status(200).json({
             user: user
