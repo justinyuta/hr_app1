@@ -49,7 +49,7 @@ function post(req, res, next) {
 
     opts = { autoCommit: true};
 
-    const salt = bcrypt.genSalt(10, function(err, salt) {
+    const salt = await bcrypt.genSalt(10, function(err, salt) {
         if (err) {
             return next(err);
         }
