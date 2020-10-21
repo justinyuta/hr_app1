@@ -49,7 +49,7 @@ function post(req, res, next) {
 
     opts = { autoCommit: true};
 
-    const salt = await bcrypt.genSalt(10, function(err, salt) {
+    const salt = bcrypt.genSalt(10, function(err, salt) {
         if (err) {
             return next(err);
         }
@@ -59,7 +59,9 @@ function post(req, res, next) {
             }
         });
     }); 
-    
+    console.log('User:');
+    console.log(user);
+
     try {
         const results = database.simpleExecute(insert_sql, binds, opts);
         console.log('Result:');
