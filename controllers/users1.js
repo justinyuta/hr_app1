@@ -3,7 +3,7 @@ var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 const database = require('../services/database.js');
 
-async function post(req, res, next) {
+function post(req, res, next) {
     var user = {
         email: req.body.email,
         password: req.body.password
