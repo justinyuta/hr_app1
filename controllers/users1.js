@@ -53,12 +53,13 @@ function post(req, res, next) {
         if (err) {
             return next(err);
         }
+        user.hashedPassword = bcrypt.hash(unhashedPassword, salt, function(err, hash) {
+            if (err) {
+                return next(err);
+            }
+        });
     }); 
-    user.hashedPassword = bcrypt.hash(unhashedPassword, salt, function(err, hash) {
-        if (err) {
-            return next(err);
-        }
-    });
+    
     try {
         const results = database.simpleExecute(insert_sql, binds, opts);
         console.log('Result:');
