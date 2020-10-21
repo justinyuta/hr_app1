@@ -3,7 +3,7 @@ var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 const database = require('../services/database.js');
 
-function post(req, res, next) {
+async function post(req, res, next) {
     var user = {
         email: req.body.email,
         password: req.body.password
@@ -49,7 +49,7 @@ function post(req, res, next) {
 
     opts = { autoCommit: true};
 
-    const salt = bcrypt.genSalt(10, function(err, salt) {
+    const salt = await bcrypt.genSalt(10, function(err, salt) {
         if (err) {
             return next(err);
         }
@@ -58,6 +58,8 @@ function post(req, res, next) {
                 return next(err);
             }
             user.hashedPassword = hash;
+            console.log('hashedPassword:');
+            console.log(user);        
         });
     }); 
     console.log('User:');
