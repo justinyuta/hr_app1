@@ -65,17 +65,17 @@ async function post(req, res, next) {
     console.log('User:');
     console.log(user);
 
-    try {
-        const results = database.simpleExecute(insert_sql, binds, opts);
+    
+    const results = await database.simpleExecute(insert_sql, binds, opts).then(function(results){
         console.log('Result:');
         console.log(results);
         user.role = 'BASE';
         res.status(200).json({
             user: user
         });
-    } catch (err) {
+    }, function(err){
         return next(err);
-    }        
+    });
 }
    
   module.exports.post = post;
