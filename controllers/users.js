@@ -6,16 +6,24 @@ const config = require('../config/config.js');
 //const database = require('../services/database.js');
 
 function post(req, res, next) {
+//    console.log('debug:');
+//    console.log(req.body);
     var user = {
         email: req.body.email
     };
     var unhashedPassword = req.body.password;
- 
+//    console.log('debug:');
+//    console.log(user);
+//    console.log(unhashedPassword);
+
     bcrypt.genSalt(10, function(err, salt) {
         if (err) {
             return next(err);
         }
- 
+//        console.log('debug:');
+//        console.log(salt);
+//        console.log(unhashedPassword);
+
         bcrypt.hash(unhashedPassword, salt, function(err, hash) {
             if (err) {
                 return next(err);
