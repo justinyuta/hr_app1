@@ -53,7 +53,9 @@ async function post(req, res, next) {
     let employee = getEmployeeFromRec(req);
  
     employee = await employees.create(employee);
- 
+  //  console.log('[Create]employee:');
+  //  console.log(employee);
+  
     res.status(201).json(employee);
   } catch (err) {
     next(err);

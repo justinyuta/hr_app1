@@ -115,7 +115,9 @@ async function create(emp) {
   const result = await database.simpleExecute(createSql, employee);
  
   employee.employee_id = result.outBinds.employee_id[0];
- 
+//  console.log('[SQL]employee:');
+//  console.log(employee);
+  
   return employee;
 }
  
