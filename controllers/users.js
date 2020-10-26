@@ -77,7 +77,7 @@ function post(req, res, next) {
                     user: user
                 });
             }, function(err){
-                console.log('Database execute error :');
+                console.log('Database execute error /user :');
                 console.log(err);
                 return next(err);
             });        
