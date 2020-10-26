@@ -77,8 +77,8 @@ async function post(req, res, next) {
                     user: user
                 });
             }, function(err){
-                console.log('Database execute error :');
-                console.log(err);
+//                console.log('Database execute error :');
+//                console.log(err);
                 return next(err);
             });        
         });
@@ -86,6 +86,6 @@ async function post(req, res, next) {
 
 }
    
-  module.exports.post = post;
+module.exports.post = post;
   
 
