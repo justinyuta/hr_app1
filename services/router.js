@@ -2,7 +2,6 @@ const express = require('express');
 const router = new express.Router();
 const employees = require('../controllers/employees.js');
 const users = require('../controllers/users.js');
-const users1 = require('../controllers/users1.js');
 const login = require('../controllers/login.js');
 const auth = require('../controllers/auth.js');
 
@@ -16,8 +15,6 @@ router.route('/employees/:id?')
 router.route('/users')
   .post(auth('ADMIN'),users.post);
 
-router.route('/users1')
-  .post(auth('ADMIN'),users1.post);
 
 
 router.route('/login')
