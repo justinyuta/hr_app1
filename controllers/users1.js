@@ -3,7 +3,7 @@ var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 const database = require('../services/database.js');
 
-async function post(req, res, next) {
+function post(req, res, next) {
     var user = {
         email: req.body.email,
         password: req.body.password
@@ -13,7 +13,7 @@ async function post(req, res, next) {
 
     var unhashedPassword = req.body.password;
 
-    const salt = await bcrypt.genSalt(10, function(err, salt) {
+    const salt = bcrypt.genSalt(10, function(err, salt) {
         if (err) {
             return next(err);
         }
@@ -70,15 +70,15 @@ async function post(req, res, next) {
 //            console.log(binds);
         
             const results = database.simpleExecute(insert_sql, binds, opts).then(function(results){
-                console.log('Result:');
-                console.log(results);
+//                console.log('Result:');
+//                console.log(results);
                 user.role = 'BASE';
                 res.status(200).json({
                     user: user
                 });
             }, function(err){
-//                console.log('Database execute error :');
-//                console.log(err);
+                console.log('Database execute error :');
+                console.log(err);
                 return next(err);
             });        
         });
