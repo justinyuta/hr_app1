@@ -4,8 +4,9 @@
   "description": "add authentication with JWTs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "test": "nodemon",
+    "dev": "nodemon",
+    "start": "node"
   },
   "keywords": [],
   "author": "",
