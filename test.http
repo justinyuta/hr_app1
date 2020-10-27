@@ -7,12 +7,22 @@ content-type: application/json
 #
 ###
 #
+@token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTYwMzcxMDM4MywiZXhwIjoxNjAzNzEzOTgzfQ.iqrN6FN36qkFiUO5BplnBBHVBV6xeCNtBsn85jvskJw
 GET http://132.145.76.61:3001/api/employees/382 HTTP/1.1
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTYwMzcxMDM4MywiZXhwIjoxNjAzNzEzOTgzfQ.iqrN6FN36qkFiUO5BplnBBHVBV6xeCNtBsn85jvskJw
+Authorization: Bearer {{token}}
 #
 ###
 #
 GET http://132.145.76.61:3001/api/employees?manage_id=320 HTTP/1.1
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTYwMzcxMDM4MywiZXhwIjoxNjAzNzEzOTgzfQ.iqrN6FN36qkFiUO5BplnBBHVBV6xeCNtBsn85jvskJw
-
-
+Authorization: Bearer {{token}}
+#
+###
+# Add user 
+POST http://132.145.76.61:3001/api/users HTTP/1.1
+Authorization: Bearer {{token}}
+content-type: application/json
+   {"email" : "adminX", 
+   "password" :"ab-1234567890"}
+#
+###
+#
